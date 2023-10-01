@@ -15,7 +15,7 @@ Also, you will need the coal sample database, which can be freely downloaded as 
 
 ### Training
 
-First of all, you need the database. You can get the coal sample dataset from [here](http://www.isi.uu.nl/Research/Databases/DRIVE/). Extract the images to a folder. This folder should have the following tree:
+First of all, you need the database. You can get the coal sample dataset from [here](https://figshare.com/projects/Raw_data_and_segmented_label_data_of_rock_sample_derived_from_X-ray_CT/162046). Extract the images to a folder. This folder should have the following tree:
 ```
 Data
 └───images
