@@ -299,7 +299,8 @@ if __name__ == '__main__':
                              f'Loss_ce: {ce.item():.4f}, ' \
                              f'Loss_fl: {fl.item():.4f}'
                     if args.auxiliary_head:
-                        report += f'acc_aux: {math.exp(-ce_aux.item()):.4f}, ' \
+                        report += f', ' \
+                                  f'acc_aux: {math.exp(-ce_aux.item()):.4f}, ' \
                                   f'Loss_aux: {ce_aux.item():.4f}'
                     pbar.set_description(report)
                     with open(log_file, "a") as f:
@@ -332,7 +333,7 @@ if __name__ == '__main__':
                         with open(log_file, "a") as f:
                             f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))}, "
                                     f'Iter {iternum + 1}/{args.iteration_time}\n')
-                            f.write(f"dice score: {np.mean(val_dice):.4f}, iou score: {np.mean(val_iou):.4f}")
+                            f.write(f"dice score: {np.mean(val_dice):.4f}, iou score: {np.mean(val_iou):.4f}\n")
                             f.write("\tdice score\tiou score\n")
                             for i in range(args.label_class):
                                 f.write(f"Label{i}:{val_dice[i]:.4f}\t{val_iou[i]:.4f}\n")
@@ -342,10 +343,10 @@ if __name__ == '__main__':
                     torch.save(net, os.path.join(args.save_path, 'checkpoint_iter{}.pth'.format(iternum + 1)))
                     print(f'Checkpoint {iternum + 1} saved!')
                     with open(log_file, "a") as f:
-                        f.write(f'Checkpoint {iternum + 1} saved!')
+                        f.write(f'Checkpoint {iternum + 1} saved!\n')
 
                 if iternum >=args.iteration_time:
                     break
                 iternum += 1
-    torch.save(net, os.path.join(args.save_path, 'checkpoint_iter{}.pth'.format(iternum + 1)))
-    print(f'Checkpoint {iternum + 1} saved!')
+    torch.save(net, os.path.join(args.save_path, 'checkpoint_iter{}.pth'.format(iternum)))
+    print(f'Checkpoint {iternum} saved!')
